@@ -3,8 +3,6 @@ import './App.css';
 import Weather from "./Weather";
 
 function App() {
-    //https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API key}
-    //8cc2056e4d936293742a9bf4c38cdad2
 
     const[city,setCity]=useState<string>('')
     const [error, setError] = useState<string | null>(null)
@@ -17,19 +15,19 @@ function App() {
             .then(response => response.json())
             .then(json => {
                 if (json.cod === "404") {
-                    setError('City not found'); // Устанавливаем ошибку, если город не найден
+                    setError('City not found');
                     setWeather(null);
                 } else {
                     setWeather({
                         temp: json.main.temp,
                         description: json.weather[0].description
                     });
-                    setError(null); // Сбрасываем ошибку, если запрос успешен
+                    setError(null);
                 }
             })
             .catch(error => {
                 console.error('Ошибка:', error);
-                setError('An error occurred'); // Общая ошибка на случай других проблем
+                setError('An error occurred');
                 setWeather(null);
             });
       }
