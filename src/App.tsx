@@ -39,7 +39,7 @@ function App() {
         <div className="App">
             <h1>Weather App</h1>
             <form onSubmit={fetchWeather}>
-                <input type="text" value={city} onChange={(e) => setCity(e.currentTarget.value)}/> 
+                <input type="text" value={city} onChange={(e) => setCity(e.currentTarget.value) } placeholder="Enter city name" /> 
                 <button type="submit">Get weather</button>
             </form>
             {error &&<div style={{ color: 'red' }}>{error}</div>}
